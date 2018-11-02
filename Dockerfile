@@ -3,7 +3,8 @@ FROM php:7.2
 RUN apt-get update && apt-get upgrade -y && \
   apt-get install -y ca-certificates wget zip unzip rsync git openssh-client \
   debconf-utils mariadb-server redis-server gnupg libzip-dev && \
-  docker-php-ext-install -j$(nproc) zip
+  docker-php-ext-install -j$(nproc) zip && \
+  docker-php-ext-install -j$(nproc) pdo_mysql
 
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -  && apt-get install -y nodejs
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
