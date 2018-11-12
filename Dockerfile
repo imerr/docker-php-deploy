@@ -6,7 +6,9 @@ RUN apt-get update && apt-get upgrade -y && \
   ca-certificates wget unzip git python3 python3-pip rsync openssh-client && \
   pip3 install ansible && \
   docker-php-ext-install -j$(nproc) zip && \
-  docker-php-ext-install -j$(nproc) pdo_mysql
+  docker-php-ext-install -j$(nproc) pdo_mysql && \
+  docker-php-ext-install -j$(nproc) gd && \
+  docker-php-ext-install -j$(nproc) bcmath
 
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -  && apt-get install -y nodejs
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
