@@ -2,7 +2,9 @@ FROM php:7.2
 
 RUN apt-get update && apt-get upgrade -y && \
   apt-get install -y ca-certificates wget zip unzip rsync git openssh-client \
-  debconf-utils mariadb-server redis-server gnupg libzip-dev && \
+  debconf-utils mariadb-server redis-server gnupg libzip-dev \
+  ca-certificates wget unzip git python3 python3-pip rsync openssh-client && \
+  pip3 install ansible && \
   docker-php-ext-install -j$(nproc) zip && \
   docker-php-ext-install -j$(nproc) pdo_mysql
 
