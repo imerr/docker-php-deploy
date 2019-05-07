@@ -10,6 +10,7 @@ RUN apt-get update && apt-get upgrade -y && \
   docker-php-ext-install -j$(nproc) zip && \
   docker-php-ext-install -j$(nproc) pdo_mysql && \
   docker-php-ext-install -j$(nproc) gd && \
+  docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
   docker-php-ext-install -j$(nproc) imap && \
   docker-php-ext-install -j$(nproc) bcmath
 
