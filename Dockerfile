@@ -12,7 +12,20 @@ RUN apt-get update && apt-get upgrade -y && \
   docker-php-ext-install -j$(nproc) gd && \
   docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
   docker-php-ext-install -j$(nproc) imap && \
-  docker-php-ext-install -j$(nproc) bcmath
+  docker-php-ext-install -j$(nproc) bcmath && \
+  apt-get -y install zip wget unzip xdg-utils \
+    libxpm4 libxrender1 libgtk2.0-0 libnss3 libgconf-2-4 xvfb \
+    gtk2-engines-pixbuf xfonts-cyrillic xfonts-100dpi xfonts-75dpi \
+    xfonts-base xfonts-scalable x11-apps && \
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+  dpkg -i --force-depends google-chrome-stable_current_amd64.deb && \
+  apt-get -y -f install && \
+  dpkg -i --force-depends google-chrome-stable_current_amd64.deb && \
+  rm google-chrome-stable_current_amd64.deb && \
+  wget https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip && \
+  unzip chromedriver_linux64.zip && \
+  mv chromedriver /usr/local/bin/ && \
+  rm chromedriver_linux64.zip
 
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -  && apt-get install -y nodejs
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
