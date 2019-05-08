@@ -1,4 +1,6 @@
 FROM php:7.2
+ARG CHROME_DRIVER_VERSION=stable
+ENV CHROME_DRIVER_VERSION ${CHROME_DRIVER_VERSION}
 
 RUN apt-get update && apt-get upgrade -y && \
   apt-get install -y ca-certificates wget zip unzip rsync git openssh-client \
