@@ -13,6 +13,7 @@ RUN apt-get update && apt-get upgrade -y && \
   docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
   docker-php-ext-install -j$(nproc) imap && \
   docker-php-ext-install -j$(nproc) bcmath && \
+  docker-php-ext-install -j$(nproc) gmp && \
   apt-get -y install zip wget unzip xdg-utils \
     libxpm4 libxrender1 libgtk2.0-0 libnss3 libgconf-2-4 xvfb \
     gtk2-engines-pixbuf xfonts-cyrillic xfonts-100dpi xfonts-75dpi \
