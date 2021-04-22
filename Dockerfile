@@ -5,7 +5,8 @@ RUN apt-get update && apt-get upgrade -y && \
   debconf-utils mariadb-server redis-server gnupg libzip-dev libfreetype6-dev \
   libgd-dev libpng-dev libjpeg62-turbo-dev libwebp-dev libc-client2007e-dev \
   ca-certificates wget unzip git python3 python3-pip rsync openssh-client \
-  libkrb5-dev libkrb5-dev libmcrypt-dev libc-client2007e libc-client-dev libssl-dev && \
+  libkrb5-dev libkrb5-dev libmcrypt-dev libc-client2007e libc-client-dev libssl-dev \ 
+  libgmp-dev && \
   pip3 install ansible && \
   docker-php-ext-install -j$(nproc) zip && \
   docker-php-ext-install -j$(nproc) pdo_mysql && \
