@@ -1,4 +1,4 @@
-FROM php:7.3
+FROM php:8.0
 
 RUN apt-get update && apt-get upgrade -y && \
   apt-get install -y ca-certificates wget zip unzip rsync git openssh-client \
