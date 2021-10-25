@@ -24,7 +24,7 @@ RUN apt-get update && apt-get upgrade -y && \
   apt-get -y -f install && \
   dpkg -i --force-depends google-chrome-stable_current_amd64.deb && \
   rm google-chrome-stable_current_amd64.deb && \
-  wget https://chromedriver.storage.googleapis.com/`curl http://chromedriver.chromium.org/home -s | sed -n -r -e 's/.+Latest stable.+release:.+\?path=([0-9.]+).*/\1/p'`/chromedriver_linux64.zip && \
+  wget https://chromedriver.storage.googleapis.com/`wget -O - -q http://chromedriver.chromium.org/home | sed -n -r -e 's/.+Latest stable.+release:.+\?path=([0-9.]+).*/\1/p'`/chromedriver_linux64.zip && \
   unzip chromedriver_linux64.zip && \
   mv chromedriver /usr/local/bin/ && \
   rm chromedriver_linux64.zip
